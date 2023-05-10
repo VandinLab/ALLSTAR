@@ -1,5 +1,7 @@
 #!/bin/bash
 
+source bio_venv/bin/activate
+
 # set default values
 num_cores=1
 top_k_rules=5
