@@ -135,19 +135,19 @@ output_file_name = args.output_file_name
 calculus_mode = args.calculus_mode
 parse_mode = args.parse_mode
 
-data_colnames = [c for c in pd.read_csv(data_path).columns]
-Y_variable = data_colnames[-1]
-data_colnames = data_colnames[:-1]
-X = data_colnames[split_column:]
-if split_column == 0:
-    Z = []
-else:
-    Z = data_colnames[:split_column]
-
-df_graph = pd.read_table(graph_path)
-G = nx.from_pandas_edgelist(df_graph, 'Gene1', 'Gene2', 'Score')
-
 if calculus_mode:
+    data_colnames = [c for c in pd.read_csv(data_path).columns]
+    Y_variable = data_colnames[-1]
+    data_colnames = data_colnames[:-1]
+    X = data_colnames[split_column:]
+    if split_column == 0:
+        Z = []
+    else:
+        Z = data_colnames[:split_column]
+
+    df_graph = pd.read_table(graph_path)
+    G = nx.from_pandas_edgelist(df_graph, 'Gene1', 'Gene2', 'Score')
+
     ALLSTAR_rule_calculus(data_path, X, Z, y_value, Y_variable, max_rule_len, alpha, G, top_k_rules, thr, output_file_name)
 elif parse_mode:
     print(ALLSTAR_rule_parser(output_file_name))
