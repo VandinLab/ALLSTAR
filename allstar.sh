@@ -62,18 +62,7 @@ if [ ! -s "$blacklist" ]
 then
   cp "$file_path" final_input_data.csv # no blacklisted words, so no need to modify the input file
 else
-  # read blacklisted words into an array
-  mapfile -t blacklist_words < "$blacklist"
-
-  # modify awk so that it retains only the columns not containing the blacklisted words from the input file
-  awk_blacklist='{ for(i=1;i<=NF;i++) { skip=0;'
-  for word in "${blacklist_words[@]}"; do
-    awk_blacklist+=' if ($i == "'"$word"'") { skip=1; break; }'
-  done
-  awk_blacklist+=' if (!skip) { printf "%s%s", $i, (i==NF ? RS : FS) } } }'
-
-  # use the modified awk
-  awk -F, "$awk_blacklist" "$file_path" > final_input_data.csv
+  python py/blacklist.py $file_path $blacklist 'final_input_data.csv'
 fi
 
 input_file_name='final_input_data.csv'
