@@ -65,10 +65,10 @@ else
   # read blacklisted words into an array
   mapfile -t blacklist_words < "$blacklist"
 
-  # modify awk so that it removes the columns containing the blacklisted words from the input file
+  # modify awk so that it retains only the columns not containing the blacklisted words from the input file
   awk_blacklist='{ for(i=1;i<=NF;i++) { skip=0;'
   for word in "${blacklist_words[@]}"; do
-    awk_blacklist+=' if ($i ~ /\<'"$word"'\>/) { skip=1; break; }'
+    awk_blacklist+=' if ($i == "'"$word"'") { skip=1; break; }'
   done
   awk_blacklist+=' if (!skip) { printf "%s%s", $i, (i==NF ? RS : FS) } } }'
 
