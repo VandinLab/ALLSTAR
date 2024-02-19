@@ -62,7 +62,7 @@ if [ ! -s "$blacklist" ]
 then
   cp "$file_path" final_input_data.csv # no blacklisted words, so no need to modify the input file
 else
-  python py/blacklist.py $file_path $blacklist 'final_input_data.csv'
+  python py/blacklist_filter.py $file_path $blacklist 'final_input_data.csv'
 fi
 
 input_file_name='final_input_data.csv'
