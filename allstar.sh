@@ -66,13 +66,11 @@ else
   mapfile -t blacklist_words < "$blacklist"
 
   # modify awk so that it removes the columns containing the blacklisted words from the input file
-  awk_blacklist='{ print '
+  awk_blacklist='{ for(i=1;i<=NF;i++) { skip=0;'
   for word in "${blacklist_words[@]}"; do
-    awk_blacklist+='$'$(awk -v word="$word" -F, 'NR==1 {for(i=1; i<=NF; i++) {if ($i ~ word) print i}}' "$file_path")
-    awk_blacklist+=','
+    awk_blacklist+=' if ($i ~ /\<'"$word"'\>/) { skip=1; break; }'
   done
-  awk_blacklist=${awk_blacklist::-1}  # Remove the trailing comma
-  awk_blacklist+=' }'
+  awk_blacklist+=' if (!skip) { printf "%s%s", $i, (i==NF ? RS : FS) } } }'
 
   # use the modified awk
   awk -F, "$awk_blacklist" "$file_path" > final_input_data.csv
