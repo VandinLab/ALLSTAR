@@ -1,6 +1,6 @@
 #!/bin/bash
 
-source bio_venv/bin/activate
+#source allstar_venv/bin/activate
 
 # set default values
 num_cores=1

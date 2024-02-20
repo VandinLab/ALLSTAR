@@ -1,11 +1,11 @@
 #!/bin/bash
 
 ## Creation of the environment
-python3.10 -m venv bio_venv
-source bio_venv/bin/activate
+#python3.10 -m venv allstar_venv
+#source allstar_venv/bin/activate
 
 ## Requirement installation
-pip install -r requirements.txt
+#pip install -r requirements.txt
 
 ## Data preparation
 mkdir -p inputs
