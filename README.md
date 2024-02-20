@@ -59,7 +59,15 @@ You can launch ALLSTAR using the `allstar.sh` Shell script. Ensure it's executab
 * `--split/-s`: Column number referring to confounders; split+1 is the first treatment's column.
 * `--y_value/-y`: Target value to evaluate.
 
-Options `-p`, `-k`, `-s`, `-l`, `-a`, and `-t` must be followed by numerical values, while `-f`, `-g`, and `-y` must be followed by strings.
+Options `-p`, `-k`, `-s`, `-l`, `-a`, and `-t` must be followed by numerical values, while `-f` and `-g` must be followed by the paths of the resources. We suggest editing your target variable so that it contains integers related to each target value
+
+**Blacklist:** Inside the ALLSTAR folder you can find a `blacklist.csv` file. This can filled in with treatments/alterations that you may want to exclude from the analysis, without the need to edit manually the input dataset. Simply write one treatment per line, otherwise leave it blank. An example:
+
+```
+TP53_somatic
+CDH1_LOH
+BRCA1_meth
+```
 
 **Example:** The `input_file.csv` contains 5 confounders in the first 5 columns and ALLSTAR is set to investigate rules causally related to target equal to 1. The analysis will take up to 20 cores.
 
