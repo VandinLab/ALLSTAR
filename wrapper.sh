@@ -1,7 +1,7 @@
 #!/bin/bash
 
 ## Creation of the environment
-python3 -m venv bio_venv
+python3.10 -m venv bio_venv
 source bio_venv/bin/activate
 
 ## Requirement installation

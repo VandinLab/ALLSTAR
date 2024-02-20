@@ -1,9 +1,9 @@
 # Install packages --------------------------------------------------------
-install.packages("renv")
+#install.packages("renv")
 
 renv::init()
-renv::install(c("base", "readxl", "dplyr", "tidyr",
-                "Hmisc", "readr", "utils"))
+renv::install(c("base", "readxl", "MASS", "mgcv","dplyr", "tidyr",
+                "cluster", "foreign", "nnet", "rpart", "Hmisc", "readr", "utils"))
 renv::snapshot()
 
 # Load packages -----------------------------------------------------------
