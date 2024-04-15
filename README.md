@@ -54,7 +54,7 @@ ALLSTAR is built to natively accept csv (comma-separated) files, containing colu
 Moreover, make sure to translate categorical variables into integers; for example:
 
 | Confounder 1 | Treatment 1 | Treatment 2 | Target |
-|----------|----------|----------|----------|----------|
+|----------|----------|----------|----------|
 | 1 | 0 | 1 | 1 |
 | 2 | 1 | 0 | 2 |
 | 2 | 1 | 1 | 3 |
