@@ -47,17 +47,32 @@ chmod +x wrapper.sh
 
 ## Running ALLSTAR
 
-You can launch ALLSTAR using the `allstar.sh` Shell script. Ensure it's executable with `chmod +x allstar.sh`. ALLSTAR accepts several parameters, some with default values:
+**Tips to format the input csv file** 
+This will save you time (and pain), so read it carefully! 
+ALLSTAR is built to natively accept csv (comma-separated) files, containing columns related to confounders, treatments and target, only in this rigorous order. The `--split/-s` parameter determines the index of the column representing the last confounder; the algorithm then assumes the last column as the target. 
+Moreover, make sure to translate categorical variables into integers; for example:
 
-* `--num_cores/-p`: Number of cores to use. Default: 1.
-* `--top_k_rules/-k`: Number of top rules to output. Default: 5.
+| Confounder 1 | Confounder 2 | Treatment 1 | Treatment 2 | Target |
+|----------|----------|----------|----------|----------|
+| 1 | 3 | 0 | 1 | 1 |
+| 2 | 2 | 1 | 0 | 2 |
+| 2 | 1 | 1 | 1 | 3 |
+| 3 | 1 | 0 | 1 | 4 |
+| 1 | 1 | 0 | 1 | 5 |
+
+Therefore, make sure to build your database carefully!
+
+You can then launch ALLSTAR using the `allstar.sh` Shell script. Ensure it's executable with `chmod +x allstar.sh`. ALLSTAR accepts several parameters, some with default values:
+
+* `--file_path/-f`: Path to the input file.
+* * `--y_value/-y`: Target value to evaluate.
+* * `--top_k_rules/-k`: Number of top rules to output. Default: 5.
 * `--graph_path/-g`: Path of the PPI graph file to use. Default: `PPI/FIsInGene_122921_with_annotations.txt`.
 * `--max_rule_length/-l`: Maximum length of a rule. Default: 4.
 * `--alpha/-a`: Confidence level alpha for FWER guarantees. Default: 0.05.
 * `--threshold_manhattan/-t`: Manhattan distance threshold for rule generation. Default: 0.01.
-* `--file_path/-f`: Path to the input file.
 * `--split/-s`: Column number referring to confounders; split+1 is the first treatment's column.
-* `--y_value/-y`: Target value to evaluate.
+* * `--num_cores/-p`: Number of cores to use. Default: 1.
 
 Options `-p`, `-k`, `-s`, `-l`, `-a`, and `-t` must be followed by numerical values, while `-f` and `-g` must be followed by the paths of the resources. We suggest editing your target variable so that it contains integers related to each target value
 
