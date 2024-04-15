@@ -45,9 +45,10 @@ chmod +x wrapper.sh
 * `reports/`: Contains aggregated result reports.
 * `results/`: Stores results of each run of the branch and bound algorithm, organized into subfolders named after the dataset.
 
-## Running ALLSTAR
+# Running ALLSTAR
 
-**Tips to format the input csv file** 
+## Tips to Format the Input csv File
+
 This will save you time (and pain), so read it carefully! 
 ALLSTAR is built to natively accept csv (comma-separated) files, containing columns related to confounders, treatments and target, only in this rigorous order. The `--split/-s` parameter determines the index of the column representing the last confounder; the algorithm then assumes the last column as the target. 
 Moreover, make sure to translate categorical variables into integers; for example:
@@ -61,6 +62,8 @@ Moreover, make sure to translate categorical variables into integers; for exampl
 | 1 | 1 | 0 | 1 | 5 |
 
 Therefore, make sure to build your database carefully!
+
+## Parameters
 
 You can then launch ALLSTAR using the `allstar.sh` Shell script. Ensure it's executable with `chmod +x allstar.sh`. ALLSTAR accepts several parameters, some with default values:
 
@@ -84,7 +87,9 @@ CDH1_LOH
 BRCA1_meth
 ```
 
-**Example:** The `input_file.csv` contains 5 confounders in the first 5 columns and ALLSTAR is set to investigate rules causally related to target equal to 1. The analysis will take up to 20 cores.
+## Practical Example
+
+The `input_file.csv` contains 5 confounders in the first 5 columns and ALLSTAR is set to investigate rules causally related to target equal to 1. The analysis will take up to 20 cores.
 
 ```
 ./allstar.sh -f input_file.csv -s 5 -y 1 -p 20
