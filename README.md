@@ -53,13 +53,15 @@ This will save you time (and pain), so read it carefully!
 ALLSTAR is built to natively accept csv (comma-separated) files, containing columns related to confounders, treatments and target, only in this rigorous order. The `--split/-s` parameter determines the index of the column representing the last confounder; the algorithm then assumes the last column as the target. 
 Moreover, make sure to translate categorical variables into integers; for example:
 
-| Confounder 1 | Confounder 2 | Treatment 1 | Treatment 2 | Target |
+| Confounder 1 | Treatment 1 | Treatment 2 | Target |
 |----------|----------|----------|----------|----------|
-| 1 | 3 | 0 | 1 | 1 |
-| 2 | 2 | 1 | 0 | 2 |
-| 2 | 1 | 1 | 1 | 3 |
-| 3 | 1 | 0 | 1 | 4 |
-| 1 | 1 | 0 | 1 | 5 |
+| 1 | 0 | 1 | 1 |
+| 2 | 1 | 0 | 2 |
+| 2 | 1 | 1 | 3 |
+| 3 | 0 | 1 | 4 |
+| 1 | 0 | 1 | 5 |
+
+Remember, that ALLSTAR evaluates causal effects taking into consideration **all provided confounders**. If you have more than just one confounder, you could create more than one csv file, each one related to a specific confounder to evaliuate alone.
 
 Therefore, make sure to build your database carefully!
 
