@@ -3,7 +3,7 @@
 
 Welcome to the ALLSTAR repository! 
 
-This GitHub folder contains the code associated with the paper titled "ALLSTAR: Inference of Reliable Causal Rules between Somatic Mutations and Cancer Phenotypes". [The journal version has been published by Bioinformatics (Oxford) and can be found here](https://academic.oup.com/bioinformatics/article/40/7/btae449/7717991). The code is designed to run on Python 3.10 and R, with wrappers provided as Shell scripts for convenience. We cannot guarantee full compatibility with Python 3.11 and above, as it may require additional dependencies and/or upgrades.
+This GitHub folder contains the code associated with the paper titled ["ALLSTAR: Inference of Reliable Causal Rules between Somatic Mutations and Cancer Phenotypes", published by Bioinformatics (Oxford)](https://academic.oup.com/bioinformatics/article/40/7/btae449/7717991). The code is designed to run on Python 3.10 and R, with wrappers provided as Shell scripts for convenience. We cannot guarantee full compatibility with Python 3.11 and above, as it may require additional dependencies and/or upgrades.
 
 ## Dependencies and Setup
 
